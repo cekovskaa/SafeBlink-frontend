@@ -65,13 +65,15 @@ const loadContent = async (route) => {
       const currentHash = window.location.hash || "";
       const initFunctions = routeInitMap[currentHash] || [];
 
-      initFunctions.forEach((fn) => {
-        try {
-          fn();
-        } catch (err) {
-          console.warn(`Error in init function ${fn.name}:`, err);
-        }
-      });
+      setTimeout(() => {
+        initFunctions.forEach((fn) => {
+          try {
+            fn();
+          } catch (err) {
+            console.warn(`Error in init function ${fn.name}:`, err);
+          }
+        });
+      }, 50);
     } else {
       throw new Error(`Failed to load template: ${route.template}`);
     }

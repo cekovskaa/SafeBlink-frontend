@@ -784,7 +784,11 @@ function displayAllPosts() {
 // function to handle view more functionality
 function initViewMoreCards() {
   const discussionBoard = document.querySelector(".discussion-board");
-  if (!discussionBoard) return;
+  if (!discussionBoard) {
+    console.warn("Discussion board not found yet, retrying...");
+    setTimeout(initViewMoreCards, 100); // retry once after 100ms
+    return;
+  }
 
   const columns = discussionBoard.querySelectorAll(".col-12.col-md-4");
   const totalCards = [];

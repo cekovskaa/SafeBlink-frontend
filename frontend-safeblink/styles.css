@@ -139,10 +139,8 @@ body {
 }
 
 .container-custom-80 {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  width: 80%;
+  margin-inline: auto;
 }
 
 .heading1 {
@@ -908,15 +906,10 @@ body {
   border: 0;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(66, 53, 107, 0.1);
- 
-
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 }
 
 .discussion-card .card-text {
   font-size: 13px;
-  word-break: break-word;
 }
 
 .rounded-circle {
@@ -934,7 +927,6 @@ body {
 
 .discussion-card .reaction-bar {
   font-size: 13px;
-  flex-wrap: wrap;
 }
 
 .discussion-date {

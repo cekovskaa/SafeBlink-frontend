@@ -945,7 +945,7 @@ body {
 .discussion-board {
   position: relative;
   max-height: 1600px;
-  overflow-y: auto;
+  overflow-y: clip;
 }
 
 .view-more-container {

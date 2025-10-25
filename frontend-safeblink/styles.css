@@ -969,11 +969,11 @@ body {
 }
 
 .hidden-card {
-  display: none;
+  display: none !important;
 }
 
 .hidden-card.shown {
-  display: block;
+  display: block !important;
 }
 
 /* profile page styles */

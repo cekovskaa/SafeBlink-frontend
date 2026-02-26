@@ -111,7 +111,7 @@ body {
 .banner {
   width: 100%;
   min-height: 70vh;
-  background-image: url("/frontend-safeblink/images/Group 14064 (1).png");
+  background-image: url("images/Group 14064 (1).png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1353,7 +1353,7 @@ input[type="number"]::-webkit-inner-spin-button {
   /* banner */
 
   .banner {
-    background-image: url("/frontend-safeblink/images/Group 14065(mobile).png");
+    background-image: url("images/Group 14065(mobile).png");
   }
 
   /* third section styles */

@@ -1,3 +1,10 @@
+// Normalize image path (handles old "../images/..." from localStorage so profile pics don't 404)
+function getProfileImagePath(path) {
+  if (!path) return "images/profile-pic.png";
+  if (path.startsWith("../images/")) return "images/" + path.slice("../images/".length);
+  return path;
+}
+
 // function for gradient bg design effect scroll
 function initBackgroundScrollEffect() {
   const section = document.querySelector(".section-three");
@@ -75,91 +82,91 @@ function initCarouselTabs() {
 function createInformirajCards() {
   const cards = [
     {
-      image: "../images/home_page_1.jpg",
+      image: "images/home_page_1.jpg",
       title: "Лоши навики при 'Live streaming'",
       text: "Лорем ипсум е едноставен модел на текст кој се користел во печатарската индустрија. Лорем и...",
       span: "Објавено на 28/05/23",
       category: "Најгледани",
     },
     {
-      image: "../images/home_page_2.jpg",
+      image: "images/home_page_2.jpg",
       title: "Праќање на звучни пораки",
       text: "Лорем ипсум е едноставен модел на текст кој се користел во печатарската индустрија. Лорем ипсум бил индустриски стандард...",
       span: "Објавено на 28/05/23",
       category: "Актуелно",
     },
     {
-      image: "../images/home_page_3.jpg",
+      image: "images/home_page_3.jpg",
       title: "Безбедност при користење на апликации",
       text: " Лорем ипсум е едноставен модел на текст кој се користел во печатарската индустрија. Лорем и...",
       span: "Објавено на 28/05/23",
       category: "Најнови",
     },
     {
-      image: "../images/home_page_4.jpg",
+      image: "images/home_page_4.jpg",
       title: "Различни уреди, различни проблеми",
       text: " Лорем ипсум е едноставен модел на текст кој се користел во печатарската индустрија. Лорем ипс...",
       span: "Објавено на 28/05/23",
       category: "Најгледани",
     },
     {
-      image: "../images/home_page_5.jpg",
+      image: "images/home_page_5.jpg",
       title: "Што се случува во позадина додека сурфаш",
       text: " Лорем ипсум е едноставен модел на текст кој се користел во печатарската индустрија. Лорем ип...",
       span: "Објавено на 28/05/23",
       category: "Актуелно",
     },
     {
-      image: "../images/home_page_6.jpg",
+      image: "images/home_page_6.jpg",
       title: "Што е важно кога снимаш некој друг",
       text: "Лорем ипсум е едноставен модел на текст кој се користел во печатарската индустрија. Лорем ип...",
       span: "Објавено на 28/05/23",
       category: "Најнови",
     },
     {
-      image: "../images/home_page_7.jpg",
+      image: "images/home_page_7.jpg",
       title: "Безбедност онлајн и офлајн",
       text: "Лорем ипсум е едноставен модел на текст кој се користел во печатарската индустрија. Лорем ипсум бил индустриски стандард...",
       span: "Објавено на 28/05/23",
       category: "Најгледани",
     },
     {
-      image: "../images/home_page_8.jpg",
+      image: "images/home_page_8.jpg",
       title: " Кој може да ја следи твојата активност на интернет?",
       text: "Лорем ипсум е едноставен модел на текст кој се користел во печатар..",
       span: "Објавено на 28/05/23",
       category: "Актуелно",
     },
     {
-      image: "../images/home_page_9.jpg",
+      image: "images/home_page_9.jpg",
       title: "Како да (не) го користиш Инстаграм",
       text: "Лорем ипсум е едноставен модел на текст кој се користел во печатарската индустрија. Лорем ип...",
       span: "Објавено на 28/05/23",
       category: "Најнови",
     },
     {
-      image: "../images/home_page_10.jpg",
+      image: "images/home_page_10.jpg",
       title: "Споделување на содржини",
       text: "Лорем ипсум е едноставен модел на текст кој се користел во печатарската индустрија. Лорем ипсум бил индустрис...",
       span: "Објавено на 28/05/23",
       category: "Најгледани",
     },
     {
-      image: "../images/home_page_11.jpg",
+      image: "images/home_page_11.jpg",
       title: "Хакерски напади",
       text: "Лорем ипсум е едноставен модел на текст кој се користел во печатарската индустрија. Лорем ипсум бил индустриски стандард. Лорем...",
       span: "Објавено на 28/05/23",
       category: "Актуелно",
     },
     {
-      image: "../images/home_page_12.jpg",
+      image: "images/home_page_12.jpg",
       title: "Ризици при работење преку интернет",
       text: "Лорем ипсум е едноставен модел на текст кој се користел во печатарската индустрија. Лорем ипсум бил индустриски стандард...",
       span: "Објавено на 28/05/23",
       category: "Најнови",
     },
     {
-      image: "../images/home_page_13.jpg",
+      image: "images/home_page_13.jpg",
       title:
         " На што да внимаваш кога користиш туѓ лаптоп или десктоп компјутер",
       text: "Лорем ипсум е едноставен модел на текст кој се користел во печатарската индустр..",
@@ -167,21 +174,21 @@ function createInformirajCards() {
       category: "Најгледани",
     },
     {
-      image: "../images/home_page_14.jpg",
+      image: "images/home_page_14.jpg",
       title: "Компјутерски вируси",
       text: " Лорем ипсум е едноставен модел на текст кој се користел во печатарската индустрија. Лорем ипсум бил индустриски стандард. Лорем ипсум...",
       span: "Објавено на 28/05/23",
       category: "Актуелно",
     },
     {
-      image: "../images/home_page_15.jpg",
+      image: "images/home_page_15.jpg",
       title: "Целиот свет во твојот екран",
       text: "  Лорем ипсум е едноставен модел на текст кој се користел во печатарската индустрија. Лорем ипсум бил индустриски стандард...",
       span: "Објавено на 28/05/23",
       category: "Најнови",
     },
     {
-      image: "../images/home_page_16.jpg",
+      image: "images/home_page_16.jpg",
       title: "Што всушност е интернетот?",
       text: "Лорем ипсум долор сит амет, цонсецтетуер адиписицинг елит. Сед до еиусмод темпор инцидидунт ут лаборе ет долоре магна аликуа.",
       span: "Објавено на 28/05/23",
@@ -473,10 +480,9 @@ function updateNavbarForAuthState(isLoggedIn) {
           const users = JSON.parse(localStorage.getItem("users")) || {};
 
           if (users[username] && users[username].imagePath) {
-            navbarProfileImg.src = users[username].imagePath;
+            navbarProfileImg.src = getProfileImagePath(users[username].imagePath);
           } else {
-            // default image
-            navbarProfileImg.src = "images/profile-pic.png";
+            navbarProfileImg.src = getProfileImagePath(null);
           }
         }
       }
@@ -559,7 +565,7 @@ function initCardOverlay() {
         const users = JSON.parse(localStorage.getItem("users")) || {};
         const userData = users[user.username] || {};
         const displayName = userData.credentials?.username || user.username;
-        const userImage = userData.imagePath || "../images/profile-pic.png";
+        const userImage = getProfileImagePath(userData.imagePath);
 
         const profileImg = desktopProfileNameImg.querySelector("img");
         const profileName = desktopProfileNameImg.querySelector("p");
@@ -574,7 +580,7 @@ function initCardOverlay() {
         const profileName = desktopProfileNameImg.querySelector("p");
 
         if (profileImg) {
-          profileImg.src = "../images/user-unlogged.png";
+          profileImg.src = "images/user-unlogged.png";
           profileImg.classList.remove("users-profileimgs");
         }
         if (profileName) profileName.textContent = "Име Презиме";
@@ -587,7 +593,7 @@ function initCardOverlay() {
         const users = JSON.parse(localStorage.getItem("users")) || {};
         const userData = users[user.username] || {};
         const displayName = userData.credentials?.username || user.username;
-        const userImage = userData.imagePath || "../images/profile-pic.png";
+        const userImage = getProfileImagePath(userData.imagePath);
 
         const profileImg = mobileProfileNameImg.querySelector("img");
         const profileName = mobileProfileNameImg.querySelector("p");
@@ -602,7 +608,7 @@ function initCardOverlay() {
         const profileName = mobileProfileNameImg.querySelector("p");
 
         if (profileImg) {
-          profileImg.src = "../images/user-unlogged.png";
+          profileImg.src = "images/user-unlogged.png";
           profileImg.classList.remove("users-profileimgs");
         }
         if (profileName) profileName.textContent = "Име Презиме";
@@ -690,7 +696,7 @@ function createNewPost(content, isInitialLoad = false) {
   const post = {
     content,
     username: displayName,
-    userImage: userData.imagePath || "../images/profile-pic.png",
+    userImage: getProfileImagePath(userData.imagePath),
     date: `${dateStr}, ${timeStr}`,
     comments: [],
     reactions: 0,
@@ -758,9 +764,7 @@ function displayAllPosts() {
           <p class="card-text">${post.content}</p>
           <div class="d-flex justify-content-between align-items-center mb-2">
             <div>
-              <img src="${
-                post.userImage
-              }" class="rounded-circle me-2" width="30" height="30" />
+              <img src="${getProfileImagePath(post.userImage)}" class="rounded-circle me-2" width="30" height="30" />
               <span class="profile-name">${post.username}</span>
             </div>
             <span class="discussion-date">${post.date}</span>
@@ -870,11 +874,7 @@ function initDiscussionBoard() {
     );
 
     if (profileImg) {
-      if (userData.imagePath) {
-        profileImg.src = userData.imagePath;
-      } else {
-        profileImg.src = "../images/profile-pic.png";
-      }
+      profileImg.src = getProfileImagePath(userData.imagePath);
     }
 
     if (profileName) {
@@ -1134,10 +1134,8 @@ function initProfilePage() {
 
   // set profile image if available
   const profileImage = document.getElementById("profile-image");
-  if (profileImage && users[username] && users[username].imagePath) {
-    profileImage.src = users[username].imagePath;
-  } else if (profileImage) {
-    profileImage.src = "../images/profile-pic.png";
+  if (profileImage) {
+    profileImage.src = getProfileImagePath(users[username]?.imagePath);
   }
 
   if (profileData) {
@@ -1173,15 +1171,15 @@ function addProfileImagesToUsers() {
   const users = JSON.parse(localStorage.getItem("users")) || {};
 
   if (users.User123 && !users.User123.imagePath) {
-    users.User123.imagePath = "../images/profile-pic.png";
+    users.User123.imagePath = "images/profile-pic.png";
   }
 
   if (users.User456 && !users.User456.imagePath) {
-    users.User456.imagePath = "../images/profile-pic2.png";
+    users.User456.imagePath = "images/profile-pic2.png";
   }
 
   if (users.User789 && !users.User789.imagePath) {
-    users.User789.imagePath = "../images/profile-pic3.png";
+    users.User789.imagePath = "images/profile-pic3.png";
   }
 
   localStorage.setItem("users", JSON.stringify(users));

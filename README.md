@@ -71,42 +71,40 @@ This web application serves as an educational platform that helps users understa
    - Discussion board
    - Video integration
    - Content overlay system
-     
 
 ## Project Screenshots
 
 ### Landing Page
 
-![Landing Page](frontend-safeblink/screenshots/landingPage.png)
+➡️ [View Screenshot](/frontend-safeblink/screenshots/landingPage.png)
 
 ### Landing Page Mobile
 
-![Landing Page Mobile](frontend-safeblink/screenshots/landingPage-Mobile.png)
+➡️ [View Screenshot](/frontend-safeblink/screenshots/landingPage-Mobile.png)
 
 ### Informiraj se Page
 
-![Informiraj se Page](frontend-safeblink/screenshots/inform-usPage.png)
+➡️ [View Screenshot](/frontend-safeblink/screenshots/inform-usPage.png)
 
 ### Informiraj se Page Mobile
 
-![Informiraj se Page Mobile](frontend-safeblink/screenshots/inform-usMobile.png)
+➡️ [View Screenshot](/frontend-safeblink/screenshots/inform-usMobile.png)
 
 ### Diskusii Page
 
-![Diskusii Page](frontend-safeblink/screenshots/discussionsPage.png)
+➡️ [View Screenshot](/frontend-safeblink/screenshots/discussionsPage.png)
 
 ### Diskusii Page Mobile
 
-![Diskusii Page Mobile](frontend-safeblink/screenshots/discussionsPageMobile.png)
+➡️ [View Screenshot](/frontend-safeblink/screenshots/discussionsPageMobile.png)
 
 ### Profile Page
 
-![Profile Page](frontend-safeblink/screenshots/profilePage.png)
+➡️ [View Screenshot](/frontend-safeblink/screenshots/profilePage.png)
 
 ### Profile Page Mobile
 
-![Profile Page Mobile](frontend-safeblink/screenshots/profilePage%20Mobile.png)
-
+➡️ [View Screenshot](/frontend-safeblink/screenshots/profilePage%20Mobile.png)
 
 ## Credits
 

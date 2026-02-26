@@ -1,7 +1,16 @@
-/* Force light appearance so the site looks the same in all browsers and ignores system dark mode */
+/* Force light appearance so the site looks the same in all browsers and ignores system dark mode (including in-app browsers / WebViews on phones) */
 :root,
 html {
   color-scheme: light;
+  /* Explicit light background and text so WebViews don't override with dark mode */
+  background: linear-gradient(
+    to bottom,
+    rgb(142, 224, 189) 20%,
+    rgb(125, 164, 228) 80%
+  );
+  background-attachment: fixed;
+  color: rgb(66, 53, 107);
+  min-height: 100%;
 }
 
 body {
@@ -14,6 +23,7 @@ body {
     rgb(125, 164, 228) 80%
   );
   background-attachment: fixed;
+  color: rgb(66, 53, 107);
 }
 
 /* navbar styles */

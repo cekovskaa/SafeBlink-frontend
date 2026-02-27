@@ -981,7 +981,14 @@ body {
   .discussion-board .row > [class*="col-"] {
     min-height: 0; /* Safari flex: allow column to shrink so overflow works */
   }
- 
+  /* Safari: inform-us card-body bottom corners not rounded without this */
+  .inform-us-cards .card-body {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .discussion-card .comment-input {
+    color: rgb(66, 53, 107); /* keep dark text for typed input */
+  }
   .discussion-card .comment-input::placeholder,
   .discussion-card .comment-input::-webkit-input-placeholder {
     color: rgb(66, 53, 107); /* Safari: placeholder text too light, make darker */

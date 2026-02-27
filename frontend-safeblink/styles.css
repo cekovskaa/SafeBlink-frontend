@@ -972,6 +972,17 @@ body {
   backdrop-filter: blur(8px); /* this adds the blur effect */
 }
 
+/* Safari: fix broken card layout on Diskusii page (overflow/clip + flex + stacking) */
+@supports (-webkit-hyphens: none) {
+  .discussion-board {
+    overflow-y: hidden; /* Safari: clip can break layout and cause overlap */
+    isolation: isolate; /* consistent stacking so view-more and cards don't mix */
+  }
+  .discussion-board .row > [class*="col-"] {
+    min-height: 0; /* Safari flex: allow column to shrink so overflow works */
+  }
+}
+
 /* view more button styles */
 .view-more-btn {
   background: none;

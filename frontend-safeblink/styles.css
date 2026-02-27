@@ -981,8 +981,11 @@ body {
   .discussion-board .row > [class*="col-"] {
     min-height: 0; /* Safari flex: allow column to shrink so overflow works */
   }
-  .discussion-card .comment-input {
-    color: rgb(66, 53, 107); /* Safari: input text is too light by default */
+ 
+  .discussion-card .comment-input::placeholder,
+  .discussion-card .comment-input::-webkit-input-placeholder {
+    color: rgb(66, 53, 107); /* Safari: placeholder text too light, make darker */
+    opacity: 0.8;
   }
 }
 

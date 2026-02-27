@@ -32,11 +32,16 @@ function initBannerVideo() {
   const banner = document.querySelector(".banner");
   if (!banner) return;
 
-  banner.style.cursor = "pointer";
-  banner.addEventListener("click", () => {
-    banner.style.backgroundImage = "none";
+  const bannerImageUrl = 'url("images/Group 14064 (1).png")';
 
+  banner.style.cursor = "pointer";
+  banner.addEventListener("click", (e) => {
+    if (banner.querySelector(".banner-video-close")) return;
+    banner.style.backgroundImage = "none";
     banner.innerHTML = `
+    <button type="button" class="banner-video-close" aria-label="Close video">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
     <iframe
       width="560"
       height="315"
@@ -49,6 +54,13 @@ function initBannerVideo() {
       style="width: 100%; min-height: 70vh; border: none;">
     </iframe>
   `;
+    const closeBtn = banner.querySelector(".banner-video-close");
+    closeBtn.addEventListener("click", (ev) => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      banner.innerHTML = "";
+      banner.style.backgroundImage = bannerImageUrl;
+    });
   });
 }
 
@@ -331,6 +343,7 @@ function initInformirajPage() {
 }
 
 // function for mobile responsive show more cards(inform-us page)
+// See more button (mobile only): show when 0, 2, or 3 of first three filters selected; hide when exactly 1 selected
 function initSeeMoreRows() {
   let currentRow = 0;
   const rows = ["extra-row-1", "extra-row-2"];
@@ -341,18 +354,29 @@ function initSeeMoreRows() {
 
   if (!btn) return;
 
-  const hasActiveFilters = () => {
-    return Array.from(filterButtons).some((button) =>
-      button.classList.contains("active")
-    );
+  const FIRST_THREE_CATEGORIES = ["Најгледани", "Актуелно", "Најнови"];
+
+  const getFirstThreeActiveCount = () => {
+    let count = 0;
+    filterButtons.forEach((button) => {
+      const category = button.textContent.trim();
+      if (
+        FIRST_THREE_CATEGORIES.includes(category) &&
+        button.classList.contains("active")
+      ) {
+        count++;
+      }
+    });
+    return count;
   };
 
   const updateButtonVisibility = () => {
-    if (hasActiveFilters()) {
-      btn.style.display = "none";
-    } else {
-      btn.style.display = currentRow < rows.length ? "flex" : "none";
-    }
+    if (!window.matchMedia("(max-width: 767px)").matches) return; // mobile only
+    const count = getFirstThreeActiveCount();
+    const showWhenManyCards = count === 0 || count === 2 || count === 3;
+    const hasMoreRows = currentRow < rows.length;
+    btn.style.display =
+      showWhenManyCards && hasMoreRows ? "flex" : "none";
   };
 
   updateButtonVisibility();

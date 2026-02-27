@@ -3,32 +3,29 @@
 html {
   color-scheme: light;
   /* Explicit light background and text so WebViews don't override with dark mode */
-  background-color: rgb(125, 164, 228); /* fallback so overscroll on mobile doesn't show white */
-  background-image: linear-gradient(
-    to bottom,
-    rgb(142, 224, 189) 20%,
-    rgb(125, 164, 228) 80%
-  );
+  background: linear-gradient(
+      to bottom,
+      rgb(142, 224, 189) 20%,
+      rgb(125, 164, 228) 80%
+    ),
+    rgb(125, 164, 228); /* fallback so overscroll on mobile doesn't show white */
   background-attachment: fixed;
   color: rgb(66, 53, 107);
   min-height: 100%;
-  min-height: 100dvh; /* mobile: use dynamic viewport so gradient covers overscroll area */
 }
 
 body {
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif !important;
   margin: 0;
-  background-color: rgb(125, 164, 228); /* fallback so overscroll on mobile doesn't show white */
-  background-image: linear-gradient(
-    to bottom,
-    rgb(142, 224, 189) 20%,
-    rgb(125, 164, 228) 80%
-  );
+  background: linear-gradient(
+      to bottom,
+      rgb(142, 224, 189) 20%,
+      rgb(125, 164, 228) 80%
+    ),
+    rgb(125, 164, 228); /* fallback so overscroll on mobile doesn't show white */
   background-attachment: fixed;
   color: rgb(66, 53, 107);
-  min-height: 100%;
-  /* Prevent overscroll bounce on mobile so the white strip doesn't appear when scrolling fast to the bottom */
   overscroll-behavior-y: none;
 }
 

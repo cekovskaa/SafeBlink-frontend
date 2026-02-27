@@ -987,6 +987,12 @@ body {
     color: rgb(66, 53, 107); /* Safari: placeholder text too light, make darker */
     opacity: 0.8;
   }
+  /* Safari: phone number in footer gets auto-styled as blue link; force white */
+  .contact-item span,
+  .contact-item a {
+    color: rgb(255, 255, 255) !important;
+    text-decoration: none !important;
+  }
 }
 
 /* view more button styles */

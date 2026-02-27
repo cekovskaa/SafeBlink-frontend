@@ -981,6 +981,9 @@ body {
   .discussion-board .row > [class*="col-"] {
     min-height: 0; /* Safari flex: allow column to shrink so overflow works */
   }
+  .discussion-card .comment-input {
+    color: rgb(66, 53, 107); /* Safari: input text is too light by default */
+  }
 }
 
 /* view more button styles */

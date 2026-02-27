@@ -968,6 +968,7 @@ body {
   text-align: center;
   padding-block: 40px;
   z-index: 2;
+  -webkit-backdrop-filter: blur(8px); /* Safari: same blur as Chrome */
   backdrop-filter: blur(8px); /* this adds the blur effect */
 }
 

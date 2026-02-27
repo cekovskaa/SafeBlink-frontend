@@ -458,6 +458,23 @@ function initLoginForm() {
   });
 }
 
+// Close mobile hamburger menu when a nav link is clicked
+function initMobileNavbarClose() {
+  const collapseEl = document.getElementById("navbarNav");
+  const navLinks = document.querySelectorAll('#navbarNav a[href^="#"]');
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      const href = this.getAttribute("href");
+      if (href && href.length > 1) {
+        if (collapseEl && typeof bootstrap !== "undefined") {
+          const collapseInstance = bootstrap.Collapse.getInstance(collapseEl);
+          if (collapseInstance) collapseInstance.hide();
+        }
+      }
+    });
+  });
+}
+
 // function to update navbar based on auth state
 function updateNavbarForAuthState(isLoggedIn) {
   const loginButton = document.querySelector(".custom-login");

@@ -137,6 +137,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Check auth state on initial load
   checkAuthState();
 
+  // Close mobile navbar when a link is clicked
+  initMobileNavbarClose();
+
   router();
   updateActiveNavLink();
 });

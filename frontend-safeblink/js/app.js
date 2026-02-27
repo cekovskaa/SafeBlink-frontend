@@ -686,13 +686,17 @@ function initCardOverlay() {
 
 // function for overlay video
 function initVideoOverlay() {
-  const playBtn = document.getElementById("playVideoBtn");
   const wrapper = document.querySelector(".img-wrapper");
+  if (!wrapper) return;
 
-  if (!playBtn || !wrapper) return;
-
-  playBtn.addEventListener("click", () => {
+  function showOverlayVideo() {
+    const img = wrapper.querySelector(".custom-img");
+    if (!img) return;
+    const imgSrc = img.getAttribute("src") || "";
     wrapper.innerHTML = `
+      <button type="button" class="overlay-video-close" aria-label="Close video">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
       <iframe 
         src="https://www.youtube.com/embed/hX0WJMbV-u4?autoplay=1"
         title="YouTube video player"
@@ -702,7 +706,23 @@ function initVideoOverlay() {
         style="width: 100%; height: 100%; border: none;">
       </iframe>
     `;
-  });
+    const closeBtn = wrapper.querySelector(".overlay-video-close");
+    closeBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      wrapper.innerHTML = `
+        <button id="playVideoBtn" class="play-btn">
+          <i class="fa-solid fa-circle-play"></i>
+        </button>
+        <img src="${imgSrc}" alt="card" class="custom-img" />
+      `;
+      const newPlayBtn = document.getElementById("playVideoBtn");
+      if (newPlayBtn) newPlayBtn.addEventListener("click", showOverlayVideo);
+    });
+  }
+
+  const playBtn = document.getElementById("playVideoBtn");
+  if (playBtn) playBtn.addEventListener("click", showOverlayVideo);
 }
 
 // function to save a post globally

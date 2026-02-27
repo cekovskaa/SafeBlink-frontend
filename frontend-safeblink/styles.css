@@ -1345,6 +1345,22 @@ input[type="number"]::-webkit-inner-spin-button {
   }
 }
 
+/* profile mobile: one Промени button below form; no per-input Промени or check/x */
+@media (max-width: 767px) {
+  .profile-section .input-wrapper .edit-button,
+  .profile-section .icon-wrapper {
+    display: none !important;
+  }
+  .profile-section .input-wrapper:hover .edit-button {
+    opacity: 0;
+    visibility: hidden;
+  }
+  /* inputs not clickable until user taps Промени */
+  .profile-section .profile-inputs:not(.editing) {
+    pointer-events: none;
+  }
+}
+
 /* responsive styles for mobile */
 
 @media (max-width: 425px) {

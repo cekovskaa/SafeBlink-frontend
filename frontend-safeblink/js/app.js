@@ -984,18 +984,21 @@ function initDesktopProfileEdit() {
 // function for profile page edit button mobile
 function initMobileProfileEdit() {
   const mobileButton = document.getElementById("mobile-edit-button");
+  if (!mobileButton) return;
 
   const newButton = mobileButton.cloneNode(true);
   mobileButton.parentNode.replaceChild(newButton, mobileButton);
 
+  const isMobile = () => window.matchMedia("(max-width: 767px)").matches;
+
   newButton.addEventListener("click", function (e) {
     e.preventDefault();
 
-    const isEditing = !document.querySelector(".profile-inputs").readOnly;
     const inputs = document.querySelectorAll(".profile-inputs");
-    const originalValues = Array.from(inputs).map((input) => input.value);
+    const isEditing = inputs.length > 0 && !inputs[0].readOnly;
 
     if (isEditing) {
+      // Зачувај: save and return to readonly, show Промени again
       const updatedData = {};
       document.querySelectorAll(".profile-inputs").forEach((input) => {
         const fieldName = input.id.replace("profile-", "");
@@ -1018,6 +1021,7 @@ function initMobileProfileEdit() {
 
       this.textContent = "Промени";
     } else {
+      // Промени: make all inputs editable
       document.querySelectorAll(".profile-inputs").forEach((input) => {
         input.removeAttribute("readonly");
         input.classList.add("editing");
@@ -1027,49 +1031,50 @@ function initMobileProfileEdit() {
         .querySelectorAll(".edit-button")
         .forEach((btn) => (btn.style.display = "none"));
 
-      document.querySelectorAll(".input-wrapper").forEach((wrapper, index) => {
-        const existingIconWrapper = wrapper.querySelector(".icon-wrapper");
-        if (existingIconWrapper) {
-          wrapper.removeChild(existingIconWrapper);
-        }
+      // On desktop (e.g. resized from mobile) keep per-input check/x; on mobile no icons
+      if (!isMobile()) {
+        const originalValues = Array.from(inputs).map((input) => input.value);
+        document.querySelectorAll(".input-wrapper").forEach((wrapper, index) => {
+          const existingIconWrapper = wrapper.querySelector(".icon-wrapper");
+          if (existingIconWrapper) existingIconWrapper.remove();
 
-        const confirmBtn = document.createElement("span");
-        confirmBtn.innerHTML =
-          '<i class="fa-sharp fa-solid fa-check check-icon pe-2"></i>';
-        confirmBtn.style.cursor = "pointer";
-        confirmBtn.style.marginRight = "10px";
+          const confirmBtn = document.createElement("span");
+          confirmBtn.innerHTML =
+            '<i class="fa-sharp fa-solid fa-check check-icon pe-2"></i>';
+          confirmBtn.style.cursor = "pointer";
+          confirmBtn.style.marginRight = "10px";
 
-        const cancelBtn = document.createElement("span");
-        cancelBtn.innerHTML = '<i class="fa-solid fa-xmark ex-icon pe-2"></i>';
-        cancelBtn.style.cursor = "pointer";
+          const cancelBtn = document.createElement("span");
+          cancelBtn.innerHTML =
+            '<i class="fa-solid fa-xmark ex-icon pe-2"></i>';
+          cancelBtn.style.cursor = "pointer";
 
-        const iconWrapper = document.createElement("div");
-        iconWrapper.className = "icon-wrapper";
-        iconWrapper.style.position = "absolute";
-        iconWrapper.style.right = "10px";
-        iconWrapper.style.top = "60%";
-        iconWrapper.style.transform = "translateY(-50%)";
-        iconWrapper.style.paddingBottom = "4px";
-        iconWrapper.appendChild(confirmBtn);
-        iconWrapper.appendChild(cancelBtn);
+          const iconWrapper = document.createElement("div");
+          iconWrapper.className = "icon-wrapper";
+          iconWrapper.style.position = "absolute";
+          iconWrapper.style.right = "10px";
+          iconWrapper.style.top = "60%";
+          iconWrapper.style.transform = "translateY(-50%)";
+          iconWrapper.style.paddingBottom = "4px";
+          iconWrapper.appendChild(confirmBtn);
+          iconWrapper.appendChild(cancelBtn);
+          wrapper.appendChild(iconWrapper);
 
-        wrapper.appendChild(iconWrapper);
-
-        confirmBtn.addEventListener("click", () => {
-          const input = wrapper.querySelector(".profile-inputs");
-          input.setAttribute("readonly", true);
-          input.classList.remove("editing");
-          wrapper.removeChild(iconWrapper);
+          confirmBtn.addEventListener("click", () => {
+            const input = wrapper.querySelector(".profile-inputs");
+            input.setAttribute("readonly", true);
+            input.classList.remove("editing");
+            iconWrapper.remove();
+          });
+          cancelBtn.addEventListener("click", () => {
+            const input = wrapper.querySelector(".profile-inputs");
+            input.value = originalValues[index];
+            input.setAttribute("readonly", true);
+            input.classList.remove("editing");
+            iconWrapper.remove();
+          });
         });
-
-        cancelBtn.addEventListener("click", () => {
-          const input = wrapper.querySelector(".profile-inputs");
-          input.value = originalValues[index];
-          input.setAttribute("readonly", true);
-          input.classList.remove("editing");
-          wrapper.removeChild(iconWrapper);
-        });
-      });
+      }
 
       this.textContent = "Зачувај";
     }
